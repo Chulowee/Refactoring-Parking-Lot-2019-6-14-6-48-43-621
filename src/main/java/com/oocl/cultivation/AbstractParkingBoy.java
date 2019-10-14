@@ -7,6 +7,9 @@ import static java.util.Objects.isNull;
 
 public abstract class AbstractParkingBoy {
 
+    private static final String NOT_ENOUGH_POSITION = "Not enough position.";
+    private static final String PLEASE_PROVIDE_YOUR_PARKING_TICKET = "Please provide your parking ticket.";
+    private static final String UNRECOGNIZED_PARKING_TICKET = "Unrecognized parking ticket.";
     private String lastErrorMessage;
     private List<ParkingLot> parkingLots = new ArrayList<>();
 
@@ -28,7 +31,7 @@ public abstract class AbstractParkingBoy {
 
         ParkingTicket parkingTicket = null;
         if (parkingLotsAreFull) {
-            lastErrorMessage = "Not enough position.";
+            lastErrorMessage = NOT_ENOUGH_POSITION;
         } else {
             parkingTicket = getParkingLotInList(parkingLots).park(car);
         }
@@ -38,9 +41,9 @@ public abstract class AbstractParkingBoy {
     public Car fetch(ParkingTicket ticket) {
         Car fetchedCar = fetchCarFromParkingLots(ticket);
         if (isNull(ticket)) {
-            lastErrorMessage = "Please provide your parking ticket.";
+            lastErrorMessage = PLEASE_PROVIDE_YOUR_PARKING_TICKET;
         } else if (isNull(fetchedCar)) {
-            lastErrorMessage = "Unrecognized parking ticket.";
+            lastErrorMessage = UNRECOGNIZED_PARKING_TICKET;
         }
         return fetchedCar;
     }
