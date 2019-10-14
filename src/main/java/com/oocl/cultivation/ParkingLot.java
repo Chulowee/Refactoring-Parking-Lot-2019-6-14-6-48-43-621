@@ -4,11 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ParkingLot {
+    public static final int DEFAULT_CAPACITY = 10;
     private final int capacity;
     private Map<ParkingTicket, Car> cars = new HashMap<>();
 
     public ParkingLot() {
-        this(10);
+        this(DEFAULT_CAPACITY);
     }
 
     public ParkingLot(int capacity) {
